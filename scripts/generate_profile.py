@@ -80,8 +80,8 @@ def split_lines(text: str, width: int, max_lines: int) -> list[str]:
 def svg_shell(width: int, height: int, title: str, body: str, theme: dict[str, str]) -> str:
     # Crop the generous vertical canvas padding while retaining a slightly
     # larger breathing room above the profile content than below it.
-    top_crop = 84
-    bottom_crop = 32
+    top_crop = 100
+    bottom_crop = 28
     visible_height = height - top_crop - bottom_crop
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{visible_height}" viewBox="0 {top_crop} {width} {visible_height}" role="img" aria-label="{esc(title)}">
 {body}
@@ -129,7 +129,7 @@ def render_profile(config: dict[str, Any], theme: dict[str, str]) -> str:
     skills = [str(x) for x in config.get("learning", [])][:12]
     cols = 3
     rows = max(1, (len(skills) + cols - 1) // cols)
-    learning_top = 680
+    learning_top = 600
     height = learning_top + 112 + rows * 92 + 38
     card_w = 344
     card_h = 74
@@ -150,8 +150,6 @@ def render_profile(config: dict[str, Any], theme: dict[str, str]) -> str:
         font-size="22" font-weight="400">
 {intro_tspans}
   </text>
-
-  <line x1="64" y1="{learning_top}" x2="1136" y2="{learning_top}" stroke="{theme["line"]}" stroke-width="1"/>
 
   <text x="64" y="{learning_top + 72}" fill="{theme["muted"]}" font-family="Arial, Helvetica, sans-serif"
         font-size="16" font-weight="700" letter-spacing="5">CURRENTLY LEARNING</text>''',
