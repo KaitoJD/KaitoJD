@@ -80,7 +80,7 @@ def split_lines(text: str, width: int, max_lines: int) -> list[str]:
 def svg_shell(width: int, height: int, title: str, body: str, theme: dict[str, str]) -> str:
     # Crop the generous vertical canvas padding while retaining a slightly
     # larger breathing room above the profile content than below it.
-    top_crop = 64
+    top_crop = 84
     bottom_crop = 32
     visible_height = height - top_crop - bottom_crop
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{visible_height}" viewBox="0 {top_crop} {width} {visible_height}" role="img" aria-label="{esc(title)}">
@@ -117,7 +117,8 @@ def skill_icon(skill: str, x: int, y: int, stroke: str) -> str:
     )
 
 def render_profile(config: dict[str, Any], theme: dict[str, str]) -> str:
-    intro_lines = split_lines(str(config.get("intro", "")), 82, 2)
+    intro = " ".join(str(config.get("intro", "")).split())
+    intro_lines = [intro] if intro else []
     intro_tspans = "\n".join(
         f'    <tspan x="64" dy="{0 if i == 0 else 39}">{esc(line)}</tspan>'
         for i, line in enumerate(intro_lines)

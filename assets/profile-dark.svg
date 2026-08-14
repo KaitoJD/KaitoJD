@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="918" viewBox="0 64 1200 918" role="img" aria-label="Nguyen Sy Nguyen — Software Engineering Student.. Currently learning.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="898" viewBox="0 84 1200 898" role="img" aria-label="Nguyen Sy Nguyen — Software Engineering Student.. Currently learning.">
   <text x="64" y="205" fill="#58A6FF" font-family="Arial, Helvetica, sans-serif"
         font-size="16" font-weight="700" letter-spacing="5">HELLO, WORLD!</text>
   <line x1="262" y1="199" x2="332" y2="199" stroke="#30363D" stroke-width="1"/>
@@ -11,8 +11,7 @@
 
   <text x="64" y="522" fill="#C9D1D9" font-family="Arial, Helvetica, sans-serif"
         font-size="22" font-weight="400">
-    <tspan x="64" dy="0">Learning to become a backend developer. Occasionally vibe coding small things just</tspan>
-    <tspan x="64" dy="39">for fun.</tspan>
+    <tspan x="64" dy="0">Learning to become a backend developer. Occasionally vibe coding small things just for fun.</tspan>
   </text>
 
   <line x1="64" y1="680" x2="1136" y2="680" stroke="#30363D" stroke-width="1"/>
