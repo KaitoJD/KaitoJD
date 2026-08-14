@@ -78,7 +78,12 @@ def split_lines(text: str, width: int, max_lines: int) -> list[str]:
     return lines
 
 def svg_shell(width: int, height: int, title: str, body: str, theme: dict[str, str]) -> str:
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="{esc(title)}">
+    # Crop the generous vertical canvas padding while retaining a slightly
+    # larger breathing room above the profile content than below it.
+    top_crop = 64
+    bottom_crop = 32
+    visible_height = height - top_crop - bottom_crop
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{visible_height}" viewBox="0 {top_crop} {width} {visible_height}" role="img" aria-label="{esc(title)}">
 {body}
 </svg>'''
 
