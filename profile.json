@@ -1,0 +1,14 @@
+{
+  "name": "Nguyen Sy Nguyen",
+  "eyebrow": "HELLO, WORLD!",
+  "role": "Software Engineering Student.",
+  "intro": "Learning to become a backend developer. Occasionally vibe coding small things just for fun.",
+  "learning": [
+    "Java",
+    "JWT",
+    "Spring Boot",
+    "REST APIs",
+    "PostgreSQL",
+    "Git"
+  ]
+}
