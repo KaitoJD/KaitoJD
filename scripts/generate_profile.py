@@ -7,7 +7,6 @@ from __future__ import annotations
 import html
 import json
 import re
-import textwrap
 from pathlib import Path
 from typing import Any
 
@@ -62,25 +61,10 @@ def write(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content.rstrip() + "\n", encoding="utf-8")
 
-def split_lines(text: str, width: int, max_lines: int) -> list[str]:
-    text = " ".join((text or "").split())
-    if not text:
-        return []
-    lines = textwrap.wrap(
-        text,
-        width=width,
-        break_long_words=False,
-        break_on_hyphens=False,
-    )
-    if len(lines) > max_lines:
-        lines = lines[:max_lines]
-        lines[-1] = lines[-1].rstrip(" .") + "…"
-    return lines
-
-def svg_shell(width: int, height: int, title: str, body: str, theme: dict[str, str]) -> str:
+def svg_shell(width: int, height: int, title: str, body: str) -> str:
     # Crop the generous vertical canvas padding while retaining a slightly
     # larger breathing room above the profile content than below it.
-    top_crop = 100
+    top_crop = 120
     bottom_crop = 28
     visible_height = height - top_crop - bottom_crop
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{visible_height}" viewBox="0 {top_crop} {width} {visible_height}" role="img" aria-label="{esc(title)}">
@@ -179,7 +163,7 @@ def render_profile(config: dict[str, Any], theme: dict[str, str]) -> str:
         )
 
     title = f'{config.get("name", "")} — {config.get("role", "")}. Currently learning.'
-    return svg_shell(1200, height, title, "\n".join(pieces), theme)
+    return svg_shell(1200, height, title, "\n".join(pieces))
 
 def picture_html(dark: str, light: str, alt: str) -> str:
     return f'''<picture>
