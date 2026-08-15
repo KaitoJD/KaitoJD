@@ -64,7 +64,7 @@ def write(path: Path, content: str) -> None:
 def svg_shell(width: int, height: int, title: str, body: str) -> str:
     # Crop the generous vertical canvas padding while retaining a slightly
     # larger breathing room above the profile content than below it.
-    top_crop = 120
+    top_crop = 144
     bottom_crop = 28
     visible_height = height - top_crop - bottom_crop
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{visible_height}" viewBox="0 {top_crop} {width} {visible_height}" role="img" aria-label="{esc(title)}">
