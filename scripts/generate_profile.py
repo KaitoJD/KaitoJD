@@ -64,7 +64,7 @@ def write(path: Path, content: str) -> None:
 def svg_shell(width: int, height: int, title: str, body: str) -> str:
     # Crop the generous vertical canvas padding while retaining a slightly
     # larger breathing room above the profile content than below it.
-    top_crop = 144
+    top_crop = 240
     bottom_crop = 28
     visible_height = height - top_crop - bottom_crop
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{visible_height}" viewBox="0 {top_crop} {width} {visible_height}" role="img" aria-label="{esc(title)}">
@@ -109,7 +109,6 @@ def render_profile(config: dict[str, Any], theme: dict[str, str]) -> str:
     )
     name = esc(config.get("name", ""))
     role = esc(config.get("role", ""))
-    eyebrow = esc(config.get("eyebrow", "HELLO, WORLD!"))
     skills = [str(x) for x in config.get("learning", [])][:12]
     cols = 3
     rows = max(1, (len(skills) + cols - 1) // cols)
@@ -120,11 +119,7 @@ def render_profile(config: dict[str, Any], theme: dict[str, str]) -> str:
     x_positions = [64, 428, 792]
 
     pieces = [
-        f'''  <text x="64" y="205" fill="{theme["accent"]}" font-family="Arial, Helvetica, sans-serif"
-        font-size="16" font-weight="700" letter-spacing="5">{eyebrow}</text>
-  <line x1="262" y1="199" x2="332" y2="199" stroke="{theme["line"]}" stroke-width="1"/>
-
-  <text x="64" y="360" fill="{theme["text"]}" font-family="Arial, Helvetica, sans-serif"
+        f'''  <text x="64" y="360" fill="{theme["text"]}" font-family="Arial, Helvetica, sans-serif"
         font-size="78" font-weight="300" letter-spacing="-3">I'm {name}.</text>
 
   <text x="64" y="442" fill="{theme["soft"]}" font-family="Georgia, 'Times New Roman', serif"
